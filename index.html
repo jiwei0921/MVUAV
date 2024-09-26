@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Unleashing Multispectral Video’s Potential in Semantic Segmentation: A Semi-supervised Viewpoint and New UAV-View Benchmark">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MVUAV</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./files/css/bulma.min.css">
+  <link rel="stylesheet" href="./files/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./files/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./files/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./files/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./files/js/fontawesome.all.min.js"></script>
+  <script src="./files/js/bulma-carousel.min.js"></script>
+  <script src="./files/js/bulma-slider.min.js"></script>
+  <script src="./files/js/index.js"></script>
+  <style>
+  .src-image{
+    margin-bottom: -5%;
+  }
+  .dst-image {
+    margin-top:-95%;
+    opacity: 0;
+    transition: 1s ease-in-out;
+  }
+  .overlay-image:hover .dst-image {
+    opacity: 1;
+  }
+
+  .hover-block {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top:10px;
+  }
+
+  .dst-column {
+    opacity: 0;
+    margin-top:-38.35%;
+    margin-bottom: 10%;
+  }
+  .overlay-column:hover .src-column {
+    opacity: 0;
+  }
+  .overlay-column:hover .dst-column {
+    opacity: 1;
+  }
+
+  caption {
+    padding: 10px;
+    caption-side: bottom;
+    font-weight: 1000;
+  }
+  
+  .center-cropped {
+    object-fit: cover;
+    object-position: center;
+    height: 200px;
+    width: 200px;
+  }
+
+  .center-cropped-auto {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
+  }
+  #squareImage {
+  width: 100%;
+  }
+
+  .square-text-block {
+    width: 500px;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .square-text-block-large {
+    width: auto;
+    height: auto;
+    /* overflow: hidden; */
+    /* position: relative; */
+    /* box-sizing: border-box; */
+  }
+  </style>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-size-3 publication-title">
+            Unleashing Multispectral Video’s Potential in Semantic Segmentation: A Semi-supervised Viewpoint and New UAV-View Benchmark
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+                <strong>Wei Ji</a><sup>1,2</sup>, Jingjing Li</a><sup>1</sup>, Wenbo Li</a><sup>3</sup>, Yilin Shen</a><sup>3</sup>, Li Cheng</a><sup>1</sup>, Hongxia Jin</a><sup>3</sup></strong><br>
+            </span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Alberta</span>,
+            <span class="author-block"><sup>2</sup>Yale University</span>,
+            <span class="author-block"><sup>3</sup>Samsung Research America</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><strong>NeurIPS 2024</strong></span>
+          </div>
+
+          <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="./files/resources/dataset.txt"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+  
+                <span class="link-block">
+                  <a href="./files/resources/dataset.txt"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                    </a>
+                </span>
+                <span class="link-block">
+                  <a href="./files/resources/dataset.txt"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="far fa-images"></i>
+                    </span>
+                    <span>Dataset</span>
+                  </a>
+                </span>
+              </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero intro">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video id="intro" autoplay muted loop playsinline height="100%">
+          <source src="./files/resources/Introduction.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"><span class="small-caps">Abstract</span></h2>
+        <div class="content has-text-justified">
+          <p>
+            Thanks to the rapid progress in RGB & thermal imaging, also known as multispectral imaging, 
+            the task of multispectral video semantic segmentation, or MVSS in short, 
+            has recently drawn significant attentions. 
+            Noticeably, it offers new opportunities in improving segmentation performance under unfavorable visual conditions such as poor light or overexposure. 
+            Unfortunately, there are currently very few datasets available, 
+            including for example MVSeg dataset that focuses purely toward eye-level view; 
+            and it features the sparse annotation nature due to the intensive demands of labeling process. 
+            To confront these challenges, this paper presents two major contributions to advance MVSS: 
+            the introduction of MVUAV, a new MVSS benchmark dataset, and the development of a dedicated semi-supervised MVSS baseline - SemiMV. 
+            Our MVUAV dataset is captured via Unmanned Aerial Vehicles (UAV), 
+            which offers a unique oblique bird’s-eye view complementary to the existing MVSS datasets; 
+            it also encompasses a broad range of day/night lighting conditions and over 30 semantic categories. 
+            In the meantime, to better leverage the sparse annotations and extra unlabeled RGB-Thermal videos, 
+            a semi-supervised learning baseline, SemiMV, 
+            is proposed to enforce consistency regularization through a dedicated Cross-collaborative Consistency Learning (C3L) module and a denoised temporal aggregation strategy. 
+            Comprehensive empirical evaluations on both MVSeg and MVUAV benchmark datasets have showcased the efficacy of our SemiMV baseline. <br>
+            <br>      
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+
+        <h3 class="title is-3">New MVUAV Dataset</h3>
+
+        <div class="content has-text-justified">
+            <p>We introduce MVUAV, a new MVSS dataset containing a wide range of RGB-T videos captured by Unmanned Aerial Vehicles (UAVs) from an oblique bird’s-eye viewpoint. 
+              This viewpoint offers a complementary perspective to the eye-level viewpoint adopted by existing MVSeg dataset.</p>
+        </div>
+
+        <div class="content has-text-centered">
+            <video id="horse-real" autoplay controls muted preload loop playsinline style="max-width: 100%; display: block; margin: auto;">
+              <source src="./files/resources/Capture.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+        <br>
+
+        <div class="title is-5 has-text-justified">
+            <p>MVUAV Examples</p>
+        </div>
+        <div class="content has-text-justified">
+            <p>The MVUAV dataset captures diverse real-world scenarios such as roads, streets, bridges, parks, seas, beaches, courts and schools; 
+              it also spans different lighting conditions from daytime to low-light and even pitch-dark scenarios.</p>
+        </div>
+        <div class="content has-text-centered">
+            <video id="horse-real" autoplay controls muted preload loop playsinline style="max-width: 100%; display: block; margin: auto;">
+              <source src="./files/resources/MVUAV.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+  
+          <h3 class="title is-3">Semi-supervised MVSS Task</h3>
+  
+          <div class="content has-text-justified">
+              <p>Illustrations of information used in the semi-supervised MVSS (Semi-MVSS) task and related semantic segmentation tasks.</p>
+          </div>
+  
+          <div class="content has-text-centered">
+              <video id="horse-real" autoplay controls muted preload loop playsinline style="max-width: 100%; display: block; margin: auto;">
+                <source src="./files/resources/SemiMVSS.mp4"
+                        type="video/mp4">
+              </video>
+          </div>
+          <br>
+
+          <h3 class="title is-3">Method Overview</h3>
+  
+          <div class="content has-text-justified">
+              <p>Illustrations of the proposed semi-supervised MVSS framework, namely SemiMV.</p>
+          </div>
+  
+          <div class="content has-text-centered">
+              <video id="horse-real" autoplay controls muted preload loop playsinline style="max-width: 100%; display: block; margin: auto;">
+                <source src="./files/resources/Method.mp4"
+                        type="video/mp4">
+              </video>
+          </div>
+          <br>
+          
+          <h3 class="title is-3">Visual Examples</h3>
+          <div class="content has-text-justified">
+              <p>We visualize some multispectral video sequences from both the MVSeg and our MVUAV datasets, alongside the segmentation results obtained using the SupOnly baseline and our SemiMV method.
+                Obviously, our SemiMV produces more accurate segmentation predictions by effectively engaging both labeled and unlabeled multispectral videos.
+              </p>
+          </div>
+          <div class="content has-text-centered">
+              <video id="horse-real" autoplay controls muted preload loop playsinline style="max-width: 100%; display: block; margin: auto;">
+                <source src="./files/resources/Results.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+
+<section class="section">
+  <div class="container is-max-desktop content">
+    <div class="content has-text-justified">
+    <strong>More details about our dataset and method can refer to our paper.</strong>
+    </div>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="content">
+        <p>
+        All data and annotations provided are strictly intended for non-commercial research purpose only. <a href="https://github.com/nerfies/nerfies.github.io">Web Template.</a> 
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
